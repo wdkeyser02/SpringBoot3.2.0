@@ -13,7 +13,7 @@
 		<div th:replace="~{page-templates :: navbar}"></div>
 		<div th:replace="~{page-templates :: main-text}"></div>
 		<div class="text">
-			<h2>Home</h2>
+			<h2 th:text="${text}"></h2>
 		</div>
 		<div th:replace="~{page-templates :: footer}"></div>
 	</div>
