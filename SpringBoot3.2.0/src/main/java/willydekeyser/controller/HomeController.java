@@ -15,8 +15,6 @@ public class HomeController {
 	private final UserService userService;
 	private final AdminService adminService;
 	
-	
-	
 	public HomeController(HomeService homeService, UserService userService, AdminService adminService) {
 		this.homeService = homeService;
 		this.userService = userService;
