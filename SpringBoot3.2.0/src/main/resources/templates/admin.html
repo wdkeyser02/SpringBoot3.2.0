@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="https://www.thymeleaf.org">
+	xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <meta charset="utf-8">
 <meta name="viewport"
@@ -14,6 +15,10 @@
 		<div th:replace="~{page-templates :: main-text}"></div>
 		<div class="text">
 			<h2 th:text="${text}"></h2>
+			<div>
+            	<p>User: <span sec:authentication="name">NOT FOUND</span></p>
+            	<p>Spring Roles: <span sec:authentication="principal.authorities">NOT FOUND</span></p>
+        	</div>
 		</div>
 		<div th:replace="~{page-templates :: footer}"></div>
 	</div>
