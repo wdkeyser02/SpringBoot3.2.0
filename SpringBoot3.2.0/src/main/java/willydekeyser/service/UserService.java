@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import willydekeyser.mapper.UserByUsernameExtractor;
@@ -43,7 +44,8 @@ public class UserService {
 	}
 	
 	@PreAuthorize("hasRole('USER')")
-	public User findByUsername(String username) {
+	public User findByUsername() {
+		String username = SecurityContextHolder.getContext().getAuthentication().getName();		
 		return jdbcClient.sql(SQL_FIND_USER_BY_USERNAME)
 				.param(username)
 				.query(new UserByUsernameExtractor());
