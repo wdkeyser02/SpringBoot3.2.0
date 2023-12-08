@@ -14,13 +14,17 @@
 	<div class="main">
 		<div th:replace="~{page-templates :: main-text}"></div>
 		<div class="text">
-			<h2 th:text="${text}"></h2>
-			<div>
-            	<p>User: <span sec:authentication="name">NOT FOUND</span></p>
-            	<p>Spring Roles: <span sec:authentication="principal.authorities">NOT FOUND</span></p>
-        	</div>
+			<h2 th:text="${text}"></h2><br />
+			<div th:each="user: ${users}">
+				<h3>Username: <span th:text="${user.username}"></span></h3>
+				<p>Password: <span th:text="${user.password}"></span></p>
+				<p>Enabled: <span th:text="${user.enabled}"></span></p>
+				<div>Roles: <div th:each="role: ${user.authority}">
+					<p><span class="tab"><span th:text="${role}"></span></span></p>
+				</div></div><br />
+			</div>
 		</div>
-		<div th:replace="~{page-templates :: footer}"></div>
 	</div>
+	<div th:replace="~{page-templates :: footer}"></div>
 </body>
 </html>

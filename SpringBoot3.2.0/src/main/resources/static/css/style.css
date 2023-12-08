@@ -3,9 +3,9 @@ htmnl, body {
 	width: 100%;
 }
 *, *::before, *::after {
-  box-sizing: inherit;
-  margin: 0;
-  padding: 0;
+	box-sizing: inherit;
+  	margin: 0;
+  	padding: 0;
 }
 
 .navbar {
@@ -50,7 +50,8 @@ htmnl, body {
 }
 
 .text {
-	height: 250px;
+	min-height: 250px;
+	height: 100%;
 }
 
 h1 {
@@ -76,5 +77,10 @@ form.link {
 	align-items: center;
 	display: inline-block; 
 	padding: 10px 15px;
+}
+
+.tab {
+	 display: inline-block;
+     margin-left: 30px;
 }
 

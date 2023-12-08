@@ -6,6 +6,6 @@ import org.springframework.stereotype.Service;
 public class AdminService {
 
 	public String getText() {
-		return "Admin";
+		return "Users list:";
 	}
 }
