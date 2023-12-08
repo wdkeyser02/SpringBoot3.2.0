@@ -14,7 +14,12 @@
 	<div class="main">
 		<div th:replace="~{page-templates :: main-text}"></div>
 		<div class="text">
-			<h2 th:text="${text}"></h2>
+			<h2 th:text="${text}"></h2><br />
+			<div sec:authorize="isAuthenticated()">
+				<p>Welcome: </p>
+				<p class="tab">User: <span sec:authentication="name">NOT FOUND</span></p><br />
+            	<p class="tab">Spring Roles: <span sec:authentication="principal.authorities">NOT FOUND</span></p>
+			</div>
 		</div>
 	</div>
 	<div th:replace="~{page-templates :: footer}"></div>
