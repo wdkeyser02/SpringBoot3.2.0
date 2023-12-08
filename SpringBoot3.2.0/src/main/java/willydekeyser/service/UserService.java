@@ -3,6 +3,7 @@ package willydekeyser.service;
 import java.util.List;
 
 import org.springframework.jdbc.core.simple.JdbcClient;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import willydekeyser.mapper.UserByUsernameExtractor;
@@ -30,15 +31,18 @@ public class UserService {
 		this.jdbcClient = jdbcClient;
 	}
 	
+	@PreAuthorize("hasRole('USER')")
 	public String getText() {
 		return "User:";
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	public List<User> getAllUsers() {
 		return jdbcClient.sql(SQL_FIND_ALL_USERS)
 				.query(new UserExtractor());
 	}
 	
+	@PreAuthorize("hasRole('USER')")
 	public User findByUsername(String username) {
 		return jdbcClient.sql(SQL_FIND_USER_BY_USERNAME)
 				.param(username)
